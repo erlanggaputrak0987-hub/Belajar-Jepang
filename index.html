@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Learn Japanese – Hiragana dan Partikel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Shippori+Mincho+B1:wght@500;800&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Latar: pohon sakura di tepi perairan -->
+<svg id="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd3e0"/><stop offset=".6" stop-color="#ffe9ee"/><stop offset="1" stop-color="#fff3e8"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8c9d6"/><stop offset=".5" stop-color="#b9cfe0"/><stop offset="1" stop-color="#7fa8c4"/>
+    </linearGradient>
+    <linearGradient id="bank" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9a6a86"/><stop offset="1" stop-color="#4e2f4a"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="2.5"/></filter>
+    <filter id="mist"><feGaussianBlur stdDeviation="14"/></filter>
+    <g id="tree">
+      <ellipse cx="320" cy="760" rx="300" ry="26" fill="#f08fb0" opacity=".4" filter="url(#mist)"/>
+      <path d="M0 720 C160 700 330 720 470 770 C520 790 560 830 600 900 L0 900Z" fill="url(#bank)"/>
+      <g fill="none" stroke="#573350" stroke-linecap="round">
+        <path d="M150 790 C160 640 110 540 190 410 C235 340 265 300 252 220" stroke-width="40"/>
+        <path d="M190 430 C300 390 420 350 570 300" stroke-width="16"/>
+        <path d="M255 260 C340 205 460 185 610 190" stroke-width="12"/>
+        <path d="M200 380 C140 330 90 270 40 210" stroke-width="12"/>
+        <path d="M175 500 C110 460 70 420 30 385" stroke-width="10"/>
+      </g>
+      <g id="bl" filter="url(#soft)"></g>
+    </g>
+  </defs>
+  <rect width="1600" height="660" fill="url(#sky)"/>
+  <circle cx="860" cy="340" r="150" fill="#e9677a" opacity=".45"/>
+  <path d="M520 660 L760 470 Q800 440 840 470 L1100 660Z" fill="#d6a3bf" opacity=".65"/>
+  <path d="M900 660 L1150 520 Q1190 500 1230 520 L1500 660Z" fill="#c68eac" opacity=".5"/>
+  <rect y="640" width="1600" height="260" fill="url(#water)"/>
+  <ellipse cx="860" cy="700" rx="130" ry="10" fill="#e9677a" opacity=".3" filter="url(#soft)"/>
+  <g class="ripples" fill="none" stroke="#fff" stroke-linecap="round" opacity=".55">
+    <path class="rp" d="M640 690 h170 M870 690 h120" stroke-width="3"/>
+    <path class="rp r2" d="M720 735 h260 M1010 735 h90" stroke-width="3"/>
+    <path class="rp r3" d="M600 790 h120 M760 790 h200 M1000 790 h80" stroke-width="3"/>
+    <path class="rp" d="M820 850 h160" stroke-width="3"/>
+  </g>
+  <use href="#tree"/>
+  <use href="#tree" transform="translate(1600 135) scale(-.85 .85)"/>
+</svg>
+<div id="petals" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="top glass">
+    <div class="brand">
+      <span class="hanko" aria-hidden="true"><span class="jp-pair"><span lang="ja">学</span><span class="reading">gaku</span></span></span>
+      <div>
+        <h1>Learn Japanese</h1>
+        <p>Belajar hiragana dan partikel <span class="jp-pair"><span lang="ja">ひらがな</span><span class="reading">hiragana</span></span></p>
+      </div>
+    </div>
+    <nav role="tablist" aria-label="Menu utama">
+      <button role="tab" id="t-depan" data-tab="depan" aria-selected="true" aria-controls="depan">Depan</button>
+      <button role="tab" id="t-belajar" data-tab="belajar" aria-selected="false" aria-controls="belajar">Belajar</button>
+      <button role="tab" id="t-kata" data-tab="kata" aria-selected="false" aria-controls="kata">Kata</button>
+      <button role="tab" id="t-kartu" data-tab="kartu" aria-selected="false" aria-controls="kartu">Flashcard</button>
+    </nav>
+  </header>
+  <div class="wave" aria-hidden="true"></div>
+
+  <main>
+    <section id="depan" role="tabpanel" aria-labelledby="t-depan">
+      <div class="glass box intro-hero">
+        <p class="intro-kicker">Panduan awal bahasa Jepang</p>
+        <h2>Mengenal Hiragana <span class="jp-pair"><span lang="ja">ひらがな</span><span class="reading">hiragana</span></span></h2>
+        <p>Hiragana adalah salah satu sistem tulisan utama dalam bahasa Jepang. Dengan mengenal bentuk dan bunyinya, kamu bisa mulai membaca kata, memahami partikel, serta mengikuti pola dasar kalimat Jepang.</p>
+      </div>
+      <div class="intro-grid">
+        <article class="glass box intro-card">
+          <h3>Apa itu Hiragana?</h3>
+          <p>Hiragana adalah aksara fonetis: setiap karakter mewakili satu mora, yaitu satu ketukan bunyi dalam bahasa Jepang. Hiragana bukan alfabet yang mengeja konsonan dan vokal secara terpisah seperti alfabet Latin.</p>
+          <p>Hiragana dipakai untuk menulis kata asli Jepang, akhiran tata bahasa, partikel, serta cara baca kanji (furigana). Dalam satu kalimat, hiragana biasanya digunakan bersama kanji dan katakana.</p>
+        </article>
+        <article class="glass box intro-card">
+          <h3>Lima bunyi vokal</h3>
+          <p>Hampir semua baris dasar mengikuti urutan vokal yang sama. Hafalkan urutannya terlebih dahulu, kemudian gabungkan dengan bunyi konsonan.</p>
+          <div class="intro-kana-row">
+            <span class="jp-pair"><span lang="ja">あ</span><span class="reading">a</span></span>
+            <span class="jp-pair"><span lang="ja">い</span><span class="reading">i</span></span>
+            <span class="jp-pair"><span lang="ja">う</span><span class="reading">u</span></span>
+            <span class="jp-pair"><span lang="ja">え</span><span class="reading">e</span></span>
+            <span class="jp-pair"><span lang="ja">お</span><span class="reading">o</span></span>
+          </div>
+          <p>Bunyi <span class="jp-pair"><span lang="ja">あ</span><span class="reading">a</span></span>, <span class="jp-pair"><span lang="ja">い</span><span class="reading">i</span></span>, <span class="jp-pair"><span lang="ja">う</span><span class="reading">u</span></span>, <span class="jp-pair"><span lang="ja">え</span><span class="reading">e</span></span>, dan <span class="jp-pair"><span lang="ja">お</span><span class="reading">o</span></span> diucapkan singkat dan jelas.</p>
+        </article>
+        <article class="glass box intro-card">
+          <h3>Hiragana dasar</h3>
+          <p>Hiragana dasar berjumlah 46 karakter. Karakter-karakter tersebut disusun berdasarkan baris bunyi, seperti baris vokal, K, S, T, dan seterusnya. Beberapa pelafalan khusus perlu diingat:</p>
+          <ul>
+            <li><span class="jp-pair"><span lang="ja">し</span><span class="reading">shi</span></span>, <span class="jp-pair"><span lang="ja">ち</span><span class="reading">chi</span></span>, <span class="jp-pair"><span lang="ja">つ</span><span class="reading">tsu</span></span>, dan <span class="jp-pair"><span lang="ja">ふ</span><span class="reading">fu</span></span>.</li>
+            <li><span class="jp-pair"><span lang="ja">を</span><span class="reading">o</span></span> biasanya dibaca “o” saat berfungsi sebagai partikel.</li>
+            <li><span class="jp-pair"><span lang="ja">ん</span><span class="reading">n</span></span> adalah bunyi nasal yang berdiri sendiri.</li>
+          </ul>
+          <p>Buka halaman <strong>Belajar</strong> untuk melihat semua karakter dan mendengarkan bunyinya.</p>
+        </article>
+        <article class="glass box intro-card">
+          <h3>Dakuten dan Handakuten</h3>
+          <p>Tanda kecil di kanan atas mengubah bunyi beberapa karakter dasar.</p>
+          <ul>
+            <li>Dakuten <span class="jp-pair"><span lang="ja">゛</span><span class="reading">dakuten</span></span> mengubah bunyi, misalnya <span class="jp-pair"><span lang="ja">か</span><span class="reading">ka</span></span> menjadi <span class="jp-pair"><span lang="ja">が</span><span class="reading">ga</span></span>.</li>
+            <li>Handakuten <span class="jp-pair"><span lang="ja">゜</span><span class="reading">handakuten</span></span> mengubah baris H menjadi bunyi P, misalnya <span class="jp-pair"><span lang="ja">は</span><span class="reading">ha</span></span> menjadi <span class="jp-pair"><span lang="ja">ぱ</span><span class="reading">pa</span></span>.</li>
+          </ul>
+        </article>
+        <article class="glass box intro-card">
+          <h3>Yōon dan っ kecil</h3>
+          <p>Yōon menggabungkan karakter berakhiran bunyi I dengan <span class="jp-pair"><span lang="ja">ゃ</span><span class="reading">ya</span></span>, <span class="jp-pair"><span lang="ja">ゅ</span><span class="reading">yu</span></span>, atau <span class="jp-pair"><span lang="ja">ょ</span><span class="reading">yo</span></span> kecil. Contohnya <span class="jp-pair"><span lang="ja">きゃ</span><span class="reading">kya</span></span>; dibaca menyatu, bukan “ki-ya”.</p>
+          <p><span class="jp-pair"><span lang="ja">っ</span><span class="reading">small tsu</span></span> kecil menandai jeda atau konsonan rangkap pada bunyi berikutnya. Contoh: <span class="jp-pair"><span lang="ja">きって</span><span class="reading">kitte</span></span> (perangko).</p>
+        </article>
+        <article class="glass box intro-card">
+          <h3>Partikel dan cara belajar</h3>
+          <p>Partikel adalah kata pendek yang mengikuti kata lain untuk menandai fungsi dalam kalimat. Beberapa partikel memiliki cara baca khusus: <span class="jp-pair"><span lang="ja">は</span><span class="reading">wa</span></span>, <span class="jp-pair"><span lang="ja">へ</span><span class="reading">e</span></span>, dan <span class="jp-pair"><span lang="ja">を</span><span class="reading">o</span></span>.</p>
+          <ol>
+            <li>Pelajari bentuk, bunyi, dan urutan goresan tiap karakter.</li>
+            <li>Latih menulis sambil mengucapkan bunyinya.</li>
+            <li>Ulangi sedikit demi sedikit dan baca contoh kata sederhana.</li>
+            <li>Gunakan pencarian, audio, dan flashcard untuk menguji ingatan.</li>
+          </ol>
+          <p>Romaji membantu di tahap awal, tetapi biasakan mengenali karakter Jepang secara langsung.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="belajar" role="tabpanel" aria-labelledby="t-belajar" hidden>
+      <div class="glass box">
+        <h2>Cari yang mau dipelajari</h2>
+        <div class="tools">
+          <input type="search" id="cari" placeholder="Cari romaji, huruf, atau kelompok" aria-label="Cari romaji, huruf, atau kelompok">
+        </div>
+        <p class="hint">Klik sebuah huruf untuk mendengar bunyinya (tergantung dukungan suara di perangkatmu).</p>
+      </div>
+      <div id="daftar"></div>
+    </section>
+
+    <section id="kata" role="tabpanel" aria-labelledby="t-kata" hidden>
+      <div class="glass box">
+        <h2>Kosakata bahasa Jepang</h2>
+        <div class="word-tabs" role="tablist" aria-label="Jenis kosakata">
+          <button type="button" role="tab" id="t-benda" aria-selected="true" aria-controls="daftar-kata">Benda</button>
+          <button type="button" role="tab" id="t-nonbenda" aria-selected="false" aria-controls="daftar-kata">Nonbenda</button>
+        </div>
+        <div id="word-categories" class="word-categories" role="tablist" aria-label="Kategori kosakata"></div>
+        <div class="tools">
+          <input type="search" id="cari-kata" placeholder="Cari kata atau artinya" aria-label="Cari kosakata atau arti">
+        </div>
+        <p class="hint">Setiap kategori berisi 150 kosakata, dengan kata yang umum digunakan sebagai prioritas. Setiap karakter Jepang dilengkapi romaji; klik kata untuk mendengarkan pelafalannya.</p>
+      </div>
+      <div id="daftar-kata"></div>
+    </section>
+
+    <section id="kartu" role="tabpanel" aria-labelledby="t-kartu" hidden>
+      <div class="kartu-layout">
+        <aside class="glass box">
+          <h2>Isi flashcard</h2>
+          <div id="filter-kartu" class="filter"></div>
+          <div class="opts">
+            <label>Arah kartu
+              <select id="arah">
+                <option value="jp">Hiragana lalu jawaban romaji</option>
+                <option value="ro">Romaji lalu jawaban hiragana</option>
+              </select>
+            </label>
+            <label class="sw"><input type="checkbox" id="acak" checked> Acak urutan kartu</label>
+          </div>
+        </aside>
+
+        <div class="stage">
+          <div class="progres"><span id="progres">0 / 0</span><div class="bar"><i id="bar"></i></div></div>
+          <div class="card" id="card" tabindex="0" role="button" aria-pressed="false" aria-label="Kartu. Tekan untuk membalik">
+            <div class="inner">
+              <div class="face front" id="front"></div>
+              <div class="face back" id="back"></div>
+            </div>
+          </div>
+          <div class="ctrl">
+            <button class="btn" id="prev" type="button">Sebelumnya</button>
+            <button class="btn main" id="flip" type="button">Balik kartu</button>
+            <button class="btn" id="next" type="button">Berikutnya</button>
+          </div>
+          <p class="hint">Klik kartu untuk membalik. Pintasan keyboard: spasi membalik, panah kiri dan kanan berpindah kartu.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span class="jp-pair"><span lang="ja">頑張って！</span><span class="reading">ganbatte!</span></span> Semangat belajar!</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

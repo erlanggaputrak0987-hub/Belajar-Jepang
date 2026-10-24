@@ -1,0 +1,230 @@
+:root{
+  --sakura:#f7b6c8; --blush:#ffe3ea; --rose:#c2456f; --ink:#3a2340; --seal:#c93a3a;
+  --glass:rgba(255,246,249,.5); --line:rgba(255,255,255,.75);
+  --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --jp:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --sans:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font:500 1rem/1.65 var(--sans);color:var(--ink);background:#ffd9e3}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+[hidden]{display:none!important}
+
+#scene{position:fixed;inset:0;width:100%;height:100%;z-index:-2}
+#petals{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.rp{animation:ripple 7s ease-in-out infinite alternate}
+.r2{animation-duration:9s;animation-delay:-3s}
+.r3{animation-duration:11s;animation-delay:-5s}
+@keyframes ripple{from{transform:translateX(-26px)}to{transform:translateX(26px)}}
+
+.wrap{max-width:1100px;margin:0 auto;padding:16px 16px 40px}
+
+/* kotak kaca */
+.glass{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);
+  border:1px solid var(--line);border-radius:20px;
+  box-shadow:0 10px 36px rgba(120,50,80,.18),inset 0 1px 0 rgba(255,255,255,.85);
+}
+.box{padding:18px 22px;margin-bottom:18px}
+h1,h2,h3{font-family:var(--serif);margin:0;line-height:1.25}
+h2{font-size:1.3rem;font-weight:800;margin-bottom:6px}
+
+/* header */
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 20px;position:sticky;top:10px;z-index:5}
+.brand{display:flex;align-items:center;gap:14px}
+.brand h1{font-size:1.75rem;font-weight:800;letter-spacing:.05em}
+.brand p{margin:0;font-size:.9rem}
+.hanko{display:grid;place-items:center;width:48px;height:48px;border-radius:7px;background:var(--seal);color:#fff;
+  font:800 1.8rem/1 var(--serif);transform:rotate(-4deg);box-shadow:inset 0 0 0 2px rgba(255,255,255,.45),0 3px 8px rgba(120,30,30,.3)}
+.hanko .reading{color:#fff;font-size:.55rem}
+.hanko [lang=ja]{font-family:var(--jp);font-weight:500}
+nav{display:flex;gap:6px;padding:4px;border-radius:999px;background:rgba(255,255,255,.45)}
+nav button{border:0;background:transparent;padding:8px 20px;border-radius:999px;cursor:pointer;font-weight:700}
+nav button[aria-selected=true]{background:var(--rose);color:#fff}
+.intro-hero{padding:26px 30px}
+.intro-hero h2{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:4px 0 12px;font-size:1.8rem}
+.intro-hero>p:last-child{max-width:780px;margin:0}
+.intro-kicker{margin:0;color:var(--rose);font-weight:700}
+.intro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.intro-card{margin:0;padding:20px 22px}
+.intro-card h3{font-size:1.25rem;margin-bottom:10px}
+.intro-card p{margin:8px 0}
+.intro-card ul,.intro-card ol{padding-left:24px;margin:8px 0}
+.intro-card li{margin:6px 0}
+.intro-kana-row{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0}
+.intro-kana-row .jp-pair [lang=ja]{font:400 2rem/1.2 var(--jp)}
+.intro-kana-row .reading{font-size:.85rem}
+.word-tabs{display:flex;gap:8px;width:max-content;max-width:100%;padding:4px;border-radius:999px;background:rgba(255,255,255,.5)}
+.word-tabs button{border:0;border-radius:999px;padding:7px 18px;background:transparent;font-weight:700;cursor:pointer}
+.word-tabs button[aria-selected=true]{background:var(--rose);color:#fff}
+.word-categories{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.word-categories button{border:1.5px solid rgba(58,35,64,.3);border-radius:12px;padding:7px 14px;background:rgba(255,255,255,.55);font-weight:700;cursor:pointer}
+.word-categories button[aria-selected=true]{background:var(--rose);border-color:var(--rose);color:#fff}
+
+/* pita ombak ala seigaiha */
+.wave{height:14px;margin:14px 0 18px;opacity:.85;
+  background:radial-gradient(circle 14px at 50% 100%,transparent 0 34%,rgba(194,69,111,.7) 35% 41%,transparent 42% 54%,rgba(194,69,111,.7) 55% 61%,transparent 62% 74%,rgba(194,69,111,.7) 75% 81%,transparent 82%) 0 0/28px 14px repeat-x}
+
+/* filter */
+.fbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.count{margin-left:auto;font-size:.9rem}
+.fgroup{margin:10px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip,.gbtn,.mini{border:1.5px solid rgba(58,35,64,.35);background:rgba(255,255,255,.55);border-radius:999px;padding:3px 13px;cursor:pointer}
+.gbtn{border-radius:10px;font-weight:700;padding:4px 14px}
+.mini{font-size:.88rem;padding:2px 12px}
+.gbtn.part{background:rgba(194,69,111,.22)}
+.chip[aria-pressed=true],.gbtn[aria-pressed=true]{background:var(--rose);border-color:var(--rose);color:#fff}
+.tools,.opts{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px}
+.opts{flex-direction:column;align-items:stretch}
+.opts label{display:grid;gap:4px}
+input[type=search],select{border:1.5px solid rgba(58,35,64,.35);background:rgba(255,255,255,.7);border-radius:12px;padding:8px 12px;min-width:220px}
+.sw{display:flex!important;align-items:center;gap:8px;cursor:pointer}
+.hint{font-size:.88rem;margin:12px 0 0;opacity:.85}
+.jp-pair{display:inline-grid;justify-items:center;vertical-align:middle;line-height:1.2}
+.reading{display:block;color:var(--rose);font:700 .72rem/1.2 var(--sans)}
+.group-explanation .jp-pair{margin:1px 1px}
+
+/* daftar huruf */
+.group-section{margin:18px 0}
+.gh{margin:0}
+.gh-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);
+  border-radius:16px;padding:14px 18px;background:var(--glass);box-shadow:0 8px 24px rgba(120,50,80,.12);
+  text-align:left;cursor:pointer;font:800 1.35rem/1.25 var(--serif)}
+.gh-toggle:hover{background:rgba(255,255,255,.7)}
+.gh-toggle [lang=ja]{font-family:var(--jp);font-weight:500}
+.group-indicator{width:10px;height:10px;flex:none;border-right:2px solid var(--rose);border-bottom:2px solid var(--rose);
+  transform:rotate(45deg) translateY(-3px);transition:transform .2s}
+.gh-toggle[aria-expanded=true] .group-indicator{transform:rotate(225deg) translate(-2px,-1px)}
+.group-content{margin-top:10px}
+.group-explanation{padding:16px 18px;margin-bottom:12px;border:1px solid var(--line);border-radius:16px;
+  background:rgba(255,246,249,.72);box-shadow:0 6px 20px rgba(120,50,80,.1)}
+.group-explanation p{margin:0 0 10px}
+.group-explanation p:last-child{margin-bottom:0}
+.group-desc{font-weight:700}
+.group-examples{display:grid;gap:8px;margin:14px 0}
+.example-row{display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:8px 14px;overflow-x:auto;
+  padding:10px 12px;border:1px solid rgba(58,35,64,.14);border-radius:12px;background:rgba(255,255,255,.5)}
+.example-formula{display:flex;flex:0 0 auto;flex-wrap:nowrap;align-items:center;gap:8px;white-space:nowrap}
+.example-formula .jp-pair{min-width:2rem}
+.example-formula .jp-pair [lang=ja]{white-space:nowrap}
+.example-formula .jp-pair [lang=ja]{font:500 1.3rem/1.2 var(--jp)}
+.example-operator{font-weight:700;color:var(--rose)}
+.example-operator.space{min-width:.3rem}
+.example-note{flex:0 0 auto;font-size:.9rem}
+.group-tip{padding:10px 12px;border-left:3px solid var(--rose);border-radius:0 10px 10px 0;background:rgba(194,69,111,.09)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:12px}
+.grid.wide{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.grid.formula-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.tile{display:grid;gap:0;text-align:center;padding:12px 6px 10px;cursor:pointer;border-radius:16px}
+.tile .c{font:500 2.5rem/1.2 var(--jp)}
+.tile .c.sm{font-size:2rem}
+.tile .r{color:var(--rose);font-weight:700;font-size:.95rem}
+.tile:hover{background:rgba(255,255,255,.7)}
+.yoon-tile{width:100%;min-width:0;overflow:visible;padding-inline:8px}
+.yoon-glyph{display:block}
+.yoon-formula{display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
+.yoon-formula .jp-pair{min-width:2.1rem}
+.yoon-formula .jp-pair [lang=ja]{font:500 1.8rem/1.2 var(--jp)}
+.yoon-formula .reading{font-size:.82rem}
+.yoon-operator{color:var(--rose);font-weight:700}
+.yoon-answer{display:grid;place-items:center;min-width:3.2rem;padding:4px 8px;border:1px solid rgba(194,69,111,.35);
+  border-radius:10px;background:rgba(194,69,111,.1)}
+.tile.p{grid-template-columns:auto 1fr;gap:0 16px;align-items:center;text-align:left;padding:12px 16px;cursor:default}
+.particle-sound{display:grid;justify-items:center;gap:2px;border:0;background:transparent;padding:0;cursor:pointer}
+.particle-sound:hover{color:var(--rose)}
+.tile.p .c{font-size:3rem;min-width:3.2rem;text-align:center}
+.tile.p .r{color:var(--rose);font-weight:700;font-size:.95rem}
+.tile.p .info{display:grid;gap:2px}
+.tile.p .n{font-weight:700}
+.tile.p .detail{font-size:.88rem}
+.tile.p .ex{font-size:.88rem}
+.tile.p .ex [lang=ja]{font-family:var(--jp);font-weight:400}
+.tile.p .ex .jp-pair{font-size:1.1rem}
+.tile.p .ex .reading{font-family:var(--sans);font-size:.72rem}
+.kosong{padding:24px;text-align:center}
+
+/* kosakata */
+.word-panels{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
+.word-panel{overflow:hidden}
+.word-panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:14px 16px;background:rgba(255,239,245,.94);border-bottom:1px solid var(--line)}
+.word-panel-head h3{font-size:1.2rem}
+.word-panel-head>span{font-size:.82rem;white-space:nowrap}
+.word-list{display:grid;gap:0;padding:4px 12px}
+.word-card{width:100%;display:grid;grid-template-columns:minmax(0,1fr) 1.5rem minmax(0,1fr);align-items:start;gap:4px 8px;text-align:left;
+  padding:10px 4px;border:0;border-bottom:1px solid rgba(58,35,64,.12);background:transparent;cursor:pointer}
+.word-card:last-child{border-bottom:0}
+.word-card:hover{background:rgba(255,255,255,.55)}
+.word-term{min-width:0;grid-column:1;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
+.word-japanese{min-width:0;display:flex;flex-wrap:wrap;align-items:flex-end;gap:2px}
+.word-japanese .jp-pair [lang=ja]{font:400 1.2rem/1.25 var(--jp)}
+.word-japanese .reading{font-size:.64rem}
+.word-romaji{font-size:.8rem;color:var(--rose);font-weight:700}
+.word-equals,.word-meaning{align-self:start;line-height:1.5rem}
+.word-equals{justify-self:center;font-weight:700;color:var(--rose)}
+.word-meaning{min-width:0;font-size:.92rem;font-weight:700}
+.word-empty{padding:14px 4px;text-align:center}
+
+/* flashcard */
+.kartu-layout{display:grid;grid-template-columns:330px 1fr;gap:18px;align-items:start}
+.stage{display:grid;justify-items:center;gap:16px}
+.progres{width:min(100%,460px);display:flex;align-items:center;gap:12px;font-weight:700}
+.bar{flex:1;height:8px;border-radius:99px;background:rgba(255,255,255,.6);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--rose);transition:width .3s}
+.card{perspective:1400px;width:min(100%,460px);height:370px;cursor:pointer;border-radius:26px}
+.inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,.2,.2,1)}
+.card.flipped .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:26px;
+  background:linear-gradient(160deg,rgba(255,255,255,.82),rgba(255,226,236,.62));
+  border:1px solid var(--line);box-shadow:0 14px 40px rgba(120,50,80,.25),inset 0 1px 0 #fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;gap:8px}
+.face::before{content:"";position:absolute;inset:11px;border:1.5px solid rgba(201,58,58,.55);border-radius:18px;pointer-events:none}
+.back{transform:rotateY(180deg)}
+.big{font:500 8rem/1.1 var(--jp)}
+.big.sm{font-size:6rem}
+.jp-card{text-align:center}
+.jp-card .reading{font-size:1.1rem}
+.ro{font:800 3.6rem/1.1 var(--serif);color:var(--rose)}
+.fn{margin:0;font-weight:700}
+.ex{margin:0;font-size:.95rem}
+.ex [lang=ja]{font:400 1.1rem var(--jp)}
+.tag{background:var(--seal);color:#fff;border-radius:6px;padding:1px 10px;font-size:.85rem;font-weight:700}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.btn{border:1px solid var(--line);background:var(--glass);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  padding:9px 20px;border-radius:999px;cursor:pointer;font-weight:700;box-shadow:0 4px 14px rgba(120,50,80,.15)}
+.btn.main{background:var(--rose);color:#fff;border-color:var(--rose)}
+.btn:disabled{opacity:.5;cursor:default}
+.stage .hint{text-align:center;max-width:460px}
+
+footer{margin-top:36px;text-align:center;font-weight:700}
+
+/* kelopak sakura */
+.petal{position:absolute;top:-5vh;width:var(--s);height:calc(var(--s)*.75);background:var(--c);
+  border-radius:150% 0 150% 0;opacity:.85;animation:fall var(--d) linear var(--dl) infinite;will-change:transform}
+@keyframes fall{
+  0%{transform:translate3d(0,-8vh,0) rotate(0)}
+  50%{transform:translate3d(var(--dx),50vh,0) rotate(200deg)}
+  100%{transform:translate3d(calc(var(--dx)*-.4),108vh,0) rotate(400deg)}
+}
+.petal.float{top:auto;left:-5vw;opacity:.8;animation:drift var(--d) linear var(--dl) infinite}
+@keyframes drift{from{transform:translateX(0) rotate(0)}to{transform:translateX(112vw) rotate(60deg)}}
+
+@media (max-width:860px){
+  .kartu-layout{grid-template-columns:1fr}
+  .brand h1{font-size:1.45rem}
+  .big{font-size:6.5rem}
+  .card{height:330px}
+  .intro-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .word-categories button{flex:1 1 auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .petal,.rp{animation:none}
+  .petal{display:none}
+  .inner,.bar i{transition:none}
+}
